@@ -1,4 +1,4 @@
-package gorsk_test
+package rest_test
 
 import (
 	"testing"

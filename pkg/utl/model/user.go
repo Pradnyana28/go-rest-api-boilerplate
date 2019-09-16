@@ -1,4 +1,4 @@
-package gorsk
+package rest
 
 import (
 	"time"

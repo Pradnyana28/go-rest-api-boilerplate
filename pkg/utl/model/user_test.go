@@ -1,9 +1,7 @@
-package gorsk_test
+package rest_test
 
 import (
 	"testing"
-
-	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 )
 
 func TestChangePassword(t *testing.T) {

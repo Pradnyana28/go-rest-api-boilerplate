@@ -1,4 +1,4 @@
-package restapi
+package rest
 
 // Company represents company model
 type Company struct {

@@ -1,4 +1,4 @@
-package gorsk
+package rest
 
 // Pagination constants
 const (
