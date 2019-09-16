@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"os"
 
 	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api"
 
@@ -10,6 +11,7 @@ import (
 
 func main() {
 
+	os.Setenv("ENVIRONMEN_NAME", "dev")
 	cfgPath := flag.String("p", "./cmd/api/conf.local.yaml", "Path to config file")
 	flag.Parse()
 
