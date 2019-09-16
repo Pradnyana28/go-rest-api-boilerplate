@@ -3,8 +3,8 @@ package user
 
 import (
 	"github.com/labstack/echo"
-	gorsk "github.com/ribice/gorsk/pkg/utl/model"
-	"github.com/ribice/gorsk/pkg/utl/query"
+	gorsk "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/query"
 )
 
 // Create creates a new user account

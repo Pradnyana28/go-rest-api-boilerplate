@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/ribice/gorsk/pkg/api/user"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/user"
 
-	gorsk "github.com/ribice/gorsk/pkg/utl/model"
+	gorsk "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 
 	"github.com/labstack/echo"
 )

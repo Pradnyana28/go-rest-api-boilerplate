@@ -4,10 +4,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ribice/gorsk/pkg/api/auth"
-	"github.com/ribice/gorsk/pkg/utl/mock"
-	"github.com/ribice/gorsk/pkg/utl/mock/mockdb"
-	"github.com/ribice/gorsk/pkg/utl/model"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/auth"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/mock"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/mock/mockdb"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 
 	"github.com/go-pg/pg/orm"
 	"github.com/labstack/echo"

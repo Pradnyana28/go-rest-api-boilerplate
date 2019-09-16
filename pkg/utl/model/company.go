@@ -1,4 +1,4 @@
-package gorsk
+package restapi
 
 // Company represents company model
 type Company struct {

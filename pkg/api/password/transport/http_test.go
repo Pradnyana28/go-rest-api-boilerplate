@@ -6,13 +6,13 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/ribice/gorsk/pkg/api/password"
-	"github.com/ribice/gorsk/pkg/api/password/transport"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/password"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/password/transport"
 
-	"github.com/ribice/gorsk/pkg/utl/mock"
-	"github.com/ribice/gorsk/pkg/utl/mock/mockdb"
-	"github.com/ribice/gorsk/pkg/utl/model"
-	"github.com/ribice/gorsk/pkg/utl/server"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/mock"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/mock/mockdb"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/server"
 
 	"github.com/go-pg/pg/orm"
 	"github.com/labstack/echo"

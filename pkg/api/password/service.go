@@ -4,8 +4,8 @@ import (
 	"github.com/go-pg/pg"
 	"github.com/go-pg/pg/orm"
 	"github.com/labstack/echo"
-	"github.com/ribice/gorsk/pkg/api/password/platform/pgsql"
-	"github.com/ribice/gorsk/pkg/utl/model"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/password/platform/pgsql"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 )
 
 // Service represents password application interface

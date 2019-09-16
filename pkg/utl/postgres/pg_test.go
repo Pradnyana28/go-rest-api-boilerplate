@@ -4,11 +4,11 @@ import (
 	"database/sql"
 	"testing"
 
-	"github.com/ribice/gorsk/pkg/utl/model"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/ribice/gorsk/pkg/utl/postgres"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/postgres"
 
 	"github.com/fortytw2/dockertest"
 )

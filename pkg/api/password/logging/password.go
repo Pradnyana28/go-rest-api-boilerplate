@@ -4,8 +4,8 @@ import (
 	"time"
 
 	"github.com/labstack/echo"
-	"github.com/ribice/gorsk/pkg/api/password"
-	"github.com/ribice/gorsk/pkg/utl/model"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/password"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 )
 
 // New creates new password logging service

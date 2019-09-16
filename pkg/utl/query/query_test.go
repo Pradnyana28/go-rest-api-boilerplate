@@ -3,11 +3,11 @@ package query_test
 import (
 	"testing"
 
-	"github.com/ribice/gorsk/pkg/utl/model"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk/pkg/utl/query"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/query"
 	"github.com/stretchr/testify/assert"
 )
 

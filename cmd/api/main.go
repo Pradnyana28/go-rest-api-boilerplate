@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 
-	"github.com/ribice/gorsk/pkg/api"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api"
 
-	"github.com/ribice/gorsk/pkg/utl/config"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/config"
 )
 
 func main() {

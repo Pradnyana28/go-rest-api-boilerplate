@@ -2,7 +2,7 @@ package rbac
 
 import (
 	"github.com/labstack/echo"
-	"github.com/ribice/gorsk/pkg/utl/model"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 )
 
 // New creates new RBAC service

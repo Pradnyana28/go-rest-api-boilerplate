@@ -3,7 +3,7 @@ package transport
 import (
 	"net/http"
 
-	"github.com/ribice/gorsk/pkg/api/auth"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/auth"
 
 	"github.com/labstack/echo"
 )

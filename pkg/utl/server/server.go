@@ -9,7 +9,7 @@ import (
 
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/middleware"
-	"github.com/ribice/gorsk/pkg/utl/middleware/secure"
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/middleware/secure"
 
 	"github.com/labstack/echo"
 )
