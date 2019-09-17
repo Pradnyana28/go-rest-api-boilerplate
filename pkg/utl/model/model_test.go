@@ -4,11 +4,11 @@ import (
 	"testing"
 
 	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/mock"
-	gorsk "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
+	rest "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 )
 
 func TestBeforeInsert(t *testing.T) {
-	base := &gorsk.Base{
+	base := &rest.Base{
 		ID: 1,
 	}
 	base.BeforeInsert(nil, nil)
@@ -21,7 +21,7 @@ func TestBeforeInsert(t *testing.T) {
 }
 
 func TestBeforeUpdate(t *testing.T) {
-	base := &gorsk.Base{
+	base := &rest.Base{
 		ID:        1,
 		CreatedAt: mock.TestTime(2000),
 	}
@@ -33,7 +33,7 @@ func TestBeforeUpdate(t *testing.T) {
 }
 
 func TestPaginationTransform(t *testing.T) {
-	p := &gorsk.PaginationReq{
+	p := &rest.PaginationReq{
 		Limit: 5000, Page: 5,
 	}
 

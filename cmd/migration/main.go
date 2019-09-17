@@ -27,7 +27,7 @@ func main() {
 	db := pg.Connect(u)
 	_, err = db.Exec("SELECT 1")
 	checkErr(err)
-	createSchema(db, &gorsk.Company{}, &gorsk.Location{}, &gorsk.Role{}, &gorsk.User{})
+	createSchema(db, &rest.Company{}, &rest.Location{}, &rest.Role{}, &rest.User{})
 
 	for _, v := range queries[0 : len(queries)-1] {
 		_, err := db.Exec(v)

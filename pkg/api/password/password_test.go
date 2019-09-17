@@ -34,7 +34,7 @@ func TestChange(t *testing.T) {
 			args: args{id: 1},
 			rbac: &mock.RBAC{
 				EnforceUserFn: func(c echo.Context, id int) error {
-					return gorsk.ErrGeneric
+					return rest.ErrGeneric
 				}},
 			wantErr: true,
 		},
@@ -47,11 +47,11 @@ func TestChange(t *testing.T) {
 					return nil
 				}},
 			udb: &mockdb.User{
-				ViewFn: func(db orm.DB, id int) (*gorsk.User, error) {
+				ViewFn: func(db orm.DB, id int) (*rest.User, error) {
 					if id != 1 {
 						return nil, nil
 					}
-					return nil, gorsk.ErrGeneric
+					return nil, rest.ErrGeneric
 				},
 			},
 		},
@@ -64,8 +64,8 @@ func TestChange(t *testing.T) {
 				}},
 			wantErr: true,
 			udb: &mockdb.User{
-				ViewFn: func(db orm.DB, id int) (*gorsk.User, error) {
-					return &gorsk.User{
+				ViewFn: func(db orm.DB, id int) (*rest.User, error) {
+					return &rest.User{
 						Password: "HashedPassword",
 					}, nil
 				},
@@ -85,8 +85,8 @@ func TestChange(t *testing.T) {
 				}},
 			wantErr: true,
 			udb: &mockdb.User{
-				ViewFn: func(db orm.DB, id int) (*gorsk.User, error) {
-					return &gorsk.User{
+				ViewFn: func(db orm.DB, id int) (*rest.User, error) {
+					return &rest.User{
 						Password: "HashedPassword",
 					}, nil
 				},
@@ -108,12 +108,12 @@ func TestChange(t *testing.T) {
 					return nil
 				}},
 			udb: &mockdb.User{
-				ViewFn: func(db orm.DB, id int) (*gorsk.User, error) {
-					return &gorsk.User{
+				ViewFn: func(db orm.DB, id int) (*rest.User, error) {
+					return &rest.User{
 						Password: "$2a$10$udRBroNGBeOYwSWCVzf6Lulg98uAoRCIi4t75VZg84xgw6EJbFNsG",
 					}, nil
 				},
-				UpdateFn: func(orm.DB, *gorsk.User) error {
+				UpdateFn: func(orm.DB, *rest.User) error {
 					return nil
 				},
 			},

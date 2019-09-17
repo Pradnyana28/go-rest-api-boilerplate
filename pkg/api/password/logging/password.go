@@ -9,7 +9,7 @@ import (
 )
 
 // New creates new password logging service
-func New(svc password.Service, logger gorsk.Logger) *LogService {
+func New(svc password.Service, logger rest.Logger) *LogService {
 	return &LogService{
 		Service: svc,
 		logger:  logger,
@@ -19,7 +19,7 @@ func New(svc password.Service, logger gorsk.Logger) *LogService {
 // LogService represents password logging service
 type LogService struct {
 	password.Service
-	logger gorsk.Logger
+	logger rest.Logger
 }
 
 const name = "password"

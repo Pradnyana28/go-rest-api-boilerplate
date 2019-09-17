@@ -67,12 +67,12 @@ func TestChangePassword(t *testing.T) {
 			},
 			id: "1",
 			udb: &mockdb.User{
-				ViewFn: func(db orm.DB, id int) (*gorsk.User, error) {
-					return &gorsk.User{
+				ViewFn: func(db orm.DB, id int) (*rest.User, error) {
+					return &rest.User{
 						Password: "oldPassword",
 					}, nil
 				},
-				UpdateFn: func(db orm.DB, usr *gorsk.User) error {
+				UpdateFn: func(db orm.DB, usr *rest.User) error {
 					return nil
 				},
 			},
