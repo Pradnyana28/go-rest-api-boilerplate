@@ -33,19 +33,19 @@ func TestCreate(t *testing.T) {
 	}{
 		{
 			name:       "Fail on validation",
-			req:        `{"first_name":"John","last_name":"Doe","username":"ju","password":"hunter123","password_confirm":"hunter123","email":"johndoe@gmail.com","company_id":1,"location_id":2,"role_id":300}`,
+			req:        `{"first_name":"John","last_name":"Doe","username":"ju","password":"hunter123","password_confirm":"hunter123","email":"johndoe@gmail.com","location_id":2,"role_id":300}`,
 			wantStatus: http.StatusBadRequest,
 		},
 		{
 			name:       "Fail on non-matching passwords",
-			req:        `{"first_name":"John","last_name":"Doe","username":"juzernejm","password":"hunter123","password_confirm":"hunter1234","email":"johndoe@gmail.com","company_id":1,"location_id":2,"role_id":300}`,
+			req:        `{"first_name":"John","last_name":"Doe","username":"juzernejm","password":"hunter123","password_confirm":"hunter1234","email":"johndoe@gmail.com","location_id":2,"role_id":300}`,
 			wantStatus: http.StatusBadRequest,
 		},
 		{
 			name: "Fail on invalid role",
-			req:  `{"first_name":"John","last_name":"Doe","username":"juzernejm","password":"hunter123","password_confirm":"hunter123","email":"johndoe@gmail.com","company_id":1,"location_id":2,"role_id":50}`,
+			req:  `{"first_name":"John","last_name":"Doe","username":"juzernejm","password":"hunter123","password_confirm":"hunter123","email":"johndoe@gmail.com","location_id":2,"role_id":50}`,
 			rbac: &mock.RBAC{
-				AccountCreateFn: func(c echo.Context, roleID rest.AccessRole, companyID, locationID int) error {
+				AccountCreateFn: func(c echo.Context, roleID rest.AccessRole, locationID int) error {
 					return echo.ErrForbidden
 				},
 			},
@@ -53,9 +53,9 @@ func TestCreate(t *testing.T) {
 		},
 		{
 			name: "Fail on RBAC",
-			req:  `{"first_name":"John","last_name":"Doe","username":"juzernejm","password":"hunter123","password_confirm":"hunter123","email":"johndoe@gmail.com","company_id":1,"location_id":2,"role_id":200}`,
+			req:  `{"first_name":"John","last_name":"Doe","username":"juzernejm","password":"hunter123","password_confirm":"hunter123","email":"johndoe@gmail.com","location_id":2,"role_id":200}`,
 			rbac: &mock.RBAC{
-				AccountCreateFn: func(c echo.Context, roleID rest.AccessRole, companyID, locationID int) error {
+				AccountCreateFn: func(c echo.Context, roleID rest.AccessRole, locationID int) error {
 					return echo.ErrForbidden
 				},
 			},
@@ -64,9 +64,9 @@ func TestCreate(t *testing.T) {
 
 		{
 			name: "Success",
-			req:  `{"first_name":"John","last_name":"Doe","username":"juzernejm","password":"hunter123","password_confirm":"hunter123","email":"johndoe@gmail.com","company_id":1,"location_id":2,"role_id":200}`,
+			req:  `{"first_name":"John","last_name":"Doe","username":"juzernejm","password":"hunter123","password_confirm":"hunter123","email":"johndoe@gmail.com","location_id":2,"role_id":200}`,
 			rbac: &mock.RBAC{
-				AccountCreateFn: func(c echo.Context, roleID rest.AccessRole, companyID, locationID int) error {
+				AccountCreateFn: func(c echo.Context, roleID rest.AccessRole, locationID int) error {
 					return nil
 				},
 			},
@@ -93,7 +93,6 @@ func TestCreate(t *testing.T) {
 				LastName:   "Doe",
 				Username:   "juzernejm",
 				Email:      "johndoe@gmail.com",
-				CompanyID:  1,
 				LocationID: 2,
 			},
 			wantStatus: http.StatusOK,
@@ -128,7 +127,7 @@ func TestCreate(t *testing.T) {
 func TestList(t *testing.T) {
 	type listResponse struct {
 		Users []rest.User `json:"users"`
-		Page  int          `json:"page"`
+		Page  int         `json:"page"`
 	}
 	cases := []struct {
 		name       string
@@ -151,7 +150,6 @@ func TestList(t *testing.T) {
 				UserFn: func(c echo.Context) *rest.AuthUser {
 					return &rest.AuthUser{
 						ID:         1,
-						CompanyID:  2,
 						LocationID: 3,
 						Role:       rest.UserRole,
 						Email:      "john@mail.com",
@@ -166,7 +164,6 @@ func TestList(t *testing.T) {
 				UserFn: func(c echo.Context) *rest.AuthUser {
 					return &rest.AuthUser{
 						ID:         1,
-						CompanyID:  2,
 						LocationID: 3,
 						Role:       rest.SuperAdminRole,
 						Email:      "john@mail.com",
@@ -185,7 +182,6 @@ func TestList(t *testing.T) {
 								FirstName:  "John",
 								LastName:   "Doe",
 								Email:      "john@mail.com",
-								CompanyID:  2,
 								LocationID: 3,
 								Role: &rest.Role{
 									ID:          1,
@@ -202,7 +198,6 @@ func TestList(t *testing.T) {
 								FirstName:  "Joanna",
 								LastName:   "Dye",
 								Email:      "joanna@mail.com",
-								CompanyID:  1,
 								LocationID: 2,
 								Role: &rest.Role{
 									ID:          2,
@@ -227,7 +222,6 @@ func TestList(t *testing.T) {
 						FirstName:  "John",
 						LastName:   "Doe",
 						Email:      "john@mail.com",
-						CompanyID:  2,
 						LocationID: 3,
 						Role: &rest.Role{
 							ID:          1,
@@ -244,7 +238,6 @@ func TestList(t *testing.T) {
 						FirstName:  "Joanna",
 						LastName:   "Dye",
 						Email:      "joanna@mail.com",
-						CompanyID:  1,
 						LocationID: 2,
 						Role: &rest.Role{
 							ID:          2,

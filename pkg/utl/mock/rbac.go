@@ -1,8 +1,8 @@
 package mock
 
 import (
+	rest "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 	"github.com/labstack/echo"
-	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 )
 
 // RBAC Mock
@@ -12,7 +12,7 @@ type RBAC struct {
 	EnforceUserFn     func(echo.Context, int) error
 	EnforceCompanyFn  func(echo.Context, int) error
 	EnforceLocationFn func(echo.Context, int) error
-	AccountCreateFn   func(echo.Context, rest.AccessRole, int, int) error
+	AccountCreateFn   func(echo.Context, rest.AccessRole, int) error
 	IsLowerRoleFn     func(echo.Context, rest.AccessRole) error
 }
 
@@ -42,8 +42,8 @@ func (a *RBAC) EnforceLocation(c echo.Context, id int) error {
 }
 
 // AccountCreate mock
-func (a *RBAC) AccountCreate(c echo.Context, roleID rest.AccessRole, companyID, locationID int) error {
-	return a.AccountCreateFn(c, roleID, companyID, locationID)
+func (a *RBAC) AccountCreate(c echo.Context, roleID rest.AccessRole, locationID int) error {
+	return a.AccountCreateFn(c, roleID, locationID)
 }
 
 // IsLowerRole mock
