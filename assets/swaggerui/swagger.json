@@ -1,17 +1,11 @@
 {
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
-  "schemes": [
-    "http"
-  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "schemes": ["http"],
   "swagger": "2.0",
   "info": {
-    "description": "API Docs for GORSK v1",
-    "title": "GORSK - Go(lang) restful starter kit",
+    "description": "API Docs for rest v1",
+    "title": "rest - Go(lang) restful starter kit",
     "contact": {
       "name": "Emir Ribic",
       "url": "https://ribice.ba",
@@ -27,9 +21,7 @@
   "paths": {
     "/login": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Logs in user by username and password.",
         "operationId": "login",
         "parameters": [
@@ -65,9 +57,7 @@
     },
     "/me": {
       "get": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Gets user's info from session.",
         "operationId": "meReq",
         "responses": {
@@ -83,9 +73,7 @@
     "/refresh/{token}": {
       "get": {
         "description": "Refreshes jwt token by checking at database whether refresh token exists.",
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Refreshes jwt token.",
         "operationId": "refresh",
         "parameters": [
@@ -116,9 +104,7 @@
     "/v1/password/{id}": {
       "patch": {
         "description": "If user's old passowrd is correct, it will be replaced with new password.",
-        "tags": [
-          "password"
-        ],
+        "tags": ["password"],
         "summary": "Changes user's password.",
         "operationId": "pwChange",
         "parameters": [
@@ -161,9 +147,7 @@
     "/v1/users": {
       "get": {
         "description": "Returns list of users. Depending on the user role requesting it, it may return all users for SuperAdmin/Admin users, all company/location users for Company/Location admins, and an error for non-admin users.",
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Returns list of users.",
         "operationId": "listUsers",
         "parameters": [
@@ -199,9 +183,7 @@
         }
       },
       "post": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Creates new user account.",
         "operationId": "userCreate",
         "responses": {
@@ -226,9 +208,7 @@
     "/v1/users/{id}": {
       "get": {
         "description": "Returns a single user by its ID.",
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Returns a single user.",
         "operationId": "getUser",
         "parameters": [
@@ -263,9 +243,7 @@
       },
       "delete": {
         "description": "Deletes a user with requested ID.",
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Deletes a user",
         "operationId": "userDelete",
         "parameters": [
@@ -297,9 +275,7 @@
       },
       "patch": {
         "description": "Updates user's contact information -\u003e first name, last name, mobile, phone, address.",
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Updates user's contact information",
         "operationId": "userUpdate",
         "parameters": [
@@ -741,9 +717,7 @@
   },
   "security": [
     {
-      "bearer": [
-        "[]"
-      ]
+      "bearer": ["[]"]
     }
   ]
 }

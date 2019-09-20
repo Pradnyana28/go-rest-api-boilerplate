@@ -1,31 +1,31 @@
-# GORSK - GO(lang) Restful Starter Kit
+# rest - GO(lang) Restful Starter Kit
 
-[![Build Status](https://travis-ci.org/ribice/gorsk.svg?branch=master)](https://travis-ci.org/ribice/gorsk)
-[![codecov](https://codecov.io/gh/ribice/gorsk/branch/master/graph/badge.svg)](https://codecov.io/gh/ribice/gorsk)
+[![Build Status](https://travis-ci.org/ribice/rest.svg?branch=master)](https://travis-ci.org/ribice/rest)
+[![codecov](https://codecov.io/gh/ribice/rest/branch/master/graph/badge.svg)](https://codecov.io/gh/ribice/rest)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Pradnyana28/go-rest-api-boilerplate)](https://goreportcard.com/report/github.com/Pradnyana28/go-rest-api-boilerplate)
-[![Maintainability](https://api.codeclimate.com/v1/badges/c3cb09dbc0bc43186464/maintainability)](https://codeclimate.com/github/ribice/gorsk/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c3cb09dbc0bc43186464/maintainability)](https://codeclimate.com/github/ribice/rest/maintainability)
 
-**[Gorsk V2 is released - read more about it](https://www.ribice.ba/refactoring-gorsk/)**
+**[rest V2 is released - read more about it](https://www.ribice.ba/refactoring-rest/)**
 
-Gorsk is a Golang starter kit for developing RESTful services. It is designed to help you kickstart your project, skipping the 'setting-up part' and jumping straight to writing business logic.
+rest is a Golang starter kit for developing RESTful services. It is designed to help you kickstart your project, skipping the 'setting-up part' and jumping straight to writing business logic.
 
-Previously Gorsk was built using [Gin](https://github.com/gin-gonic/gin). Gorsk using Gin is available [HERE](https://github.com/Pradnyana28/go-rest-api-boilerplate-gin).
+Previously rest was built using [Gin](https://github.com/gin-gonic/gin). rest using Gin is available [HERE](https://github.com/Pradnyana28/go-rest-api-boilerplate-gin).
 
-Gorsk follows SOLID principles, with package design being inspired by several package designs, including Ben Johnson's [Standard Package Layout](https://medium.com/@benbjohnson/standard-package-layout-7cdbc8391fc1), [Go Standard Package Layout](https://github.com/golang-standards/project-layout) with my own ideas applied to both. The idea for building this project and its readme structure was inspired by [this](https://github.com/qiangxue/golang-restful-starter-kit).
+rest follows SOLID principles, with package design being inspired by several package designs, including Ben Johnson's [Standard Package Layout](https://medium.com/@benbjohnson/standard-package-layout-7cdbc8391fc1), [Go Standard Package Layout](https://github.com/golang-standards/project-layout) with my own ideas applied to both. The idea for building this project and its readme structure was inspired by [this](https://github.com/qiangxue/golang-restful-starter-kit).
 
 This starter kit currently provides:
 
-* Fully featured RESTful endpoints for authentication, changing password and CRUD operations on the user entity
-* JWT authentication and session
-* Application configuration via config file (yaml)
-* RBAC (role-based access control)
-* Structured logging
-* Great performance
-* Request marshaling and data validation
-* API Docs using SwaggerUI
-* Mocking using stdlib
-* Complete test coverage
-* Containerized database query tests
+- Fully featured RESTful endpoints for authentication, changing password and CRUD operations on the user entity
+- JWT authentication and session
+- Application configuration via config file (yaml)
+- RBAC (role-based access control)
+- Structured logging
+- Great performance
+- Request marshaling and data validation
+- API Docs using SwaggerUI
+- Mocking using stdlib
+- Complete test coverage
+- Containerized database query tests
 
 The following dependencies are used in this project (generated using [Glice](https://github.com/ribice/glice)):
 
@@ -63,11 +63,11 @@ Most of these can easily be replaced with your own choices since their usage is 
 
 ## Getting started
 
-Using Gorsk requires having Go 1.7 or above. Once you downloaded Gorsk (either using Git or go get) you need to configure the following:
+Using rest requires having Go 1.7 or above. Once you downloaded rest (either using Git or go get) you need to configure the following:
 
-1. To use Gorsk as a starting point of a real project whose package name is something like `github.com/author/project`, move the directory `$GOPATH/github.com/Pradnyana28/go-rest-api-boilerplate` to `$GOPATH/github.com/author/project` and do a global replacement of the string `github.com/Pradnyana28/go-rest-api-boilerplate` with `github.com/author/project`.
+1. To use rest as a starting point of a real project whose package name is something like `github.com/author/project`, move the directory `$GOPATH/github.com/Pradnyana28/go-rest-api-boilerplate` to `$GOPATH/github.com/author/project` and do a global replacement of the string `github.com/Pradnyana28/go-rest-api-boilerplate` with `github.com/author/project`.
 
-2. Rename the gorsk package inside `pkg/utl/model` with your own project name, then using search & replace do a global replacement of `.gorsk` with your project name.
+2. Rename the rest package inside `pkg/utl/model` with your own project name, then using search & replace do a global replacement of `.rest` with your project name.
 
 3. Change the configuration file according to your needs, or create a new one.
 
@@ -83,15 +83,15 @@ go run cmd/api/main.go
 
 The application runs as an HTTP server at port 8080. It provides the following RESTful endpoints:
 
-* `POST /login`: accepts username/passwords and returns jwt token and refresh token
-* `GET /refresh/:token`: refreshes sessions and returns jwt token
-* `GET /me`: returns info about currently logged in user
-* `GET /swaggerui/` (with trailing slash): launches swaggerui in browser
-* `GET /v1/users`: returns list of users
-* `GET /v1/users/:id`: returns single user
-* `POST /v1/users`: creates a new user
-* `PATCH /v1/password/:id`: changes password for a user
-* `DELETE /v1/users/:id`: deletes a user
+- `POST /login`: accepts username/passwords and returns jwt token and refresh token
+- `GET /refresh/:token`: refreshes sessions and returns jwt token
+- `GET /me`: returns info about currently logged in user
+- `GET /swaggerui/` (with trailing slash): launches swaggerui in browser
+- `GET /v1/users`: returns list of users
+- `GET /v1/users/:id`: returns single user
+- `POST /v1/users`: creates a new user
+- `PATCH /v1/password/:id`: changes password for a user
+- `DELETE /v1/users/:id`: deletes a user
 
 You can log in as admin to the application by sending a post request to localhost:8080/login with username `admin` and password `admin` in JSON body.
 
@@ -111,7 +111,7 @@ Let's say you have a table named 'cars' that handles employee's cars. To impleme
 
 6. In logging directory create a file named `car.go` and copy the logic from another service. This serves as request/response logging.
 
-6. In `pkg/api/api.go` wire up all the logic, by instantiating car service, passing it to the logging and transport service afterwards.
+7. In `pkg/api/api.go` wire up all the logic, by instantiating car service, passing it to the logging and transport service afterwards.
 
 ### Implementing other platforms
 
@@ -131,7 +131,7 @@ To use a transaction, before interacting with db create a new transaction:
 err := s.db.RunInTransaction(func (tx *pg.Tx) error{
     // Application service here
 })
-````
+```
 
 Instead of passing database client as `s.db` , inside this function pass it as `tx`. Handle the error accordingly.
 
@@ -139,7 +139,7 @@ Instead of passing database client as `s.db` , inside this function pass it as `
 
 1. Root directory contains things not related to code directly, e.g. docker-compose, CI/CD, readme, bash scripts etc. It should also contain vendor folder, Gopkg.toml and Gopkg.lock if dep is being used.
 
-2. Cmd package contains code for starting applications (main packages). The directory name for each application should match the name of the executable you want to have. Gorsk is structured as a monolith application but can be easily restructured to contain multiple microservices. An application may produce multiple binaries, therefore Gorsk uses the Go convention of placing main package as a subdirectory of the cmd package. As an example, scheduler application's binary would be located under cmd/cron. It also loads the necessery configuration and passes it to the service initializers.
+2. Cmd package contains code for starting applications (main packages). The directory name for each application should match the name of the executable you want to have. rest is structured as a monolith application but can be easily restructured to contain multiple microservices. An application may produce multiple binaries, therefore rest uses the Go convention of placing main package as a subdirectory of the cmd package. As an example, scheduler application's binary would be located under cmd/cron. It also loads the necessery configuration and passes it to the service initializers.
 
 3. Rest of the code is located under /pkg. The pkg directory contains `utl` and 'microservice' directories.
 
@@ -155,7 +155,7 @@ Instead of passing database client as `s.db` , inside this function pass it as `
 
 ## License
 
-gorsk is licensed under the MIT license. Check the [LICENSE](LICENSE) file for details.
+rest is licensed under the MIT license. Check the [LICENSE](LICENSE) file for details.
 
 ## Author
 

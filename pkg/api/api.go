@@ -2,9 +2,9 @@
 // Use of this source code is governed by an MIT-style
 // license that can be found in the LICENSE file.
 
-// GORSK - Go(lang) restful starter kit
+// rest - Go(lang) restful starter kit
 //
-// API Docs for GORSK v1
+// API Docs for rest v1
 //
 // 	 Terms Of Service:  N/A
 //     Schemes: http

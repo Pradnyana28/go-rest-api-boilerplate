@@ -1,28 +1,28 @@
 package mock
 
 import (
+	rest "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 	"github.com/labstack/echo"
-	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 )
 
 // RBAC Mock
 type RBAC struct {
-	UserFn            func(echo.Context) *gorsk.AuthUser
-	EnforceRoleFn     func(echo.Context, gorsk.AccessRole) error
+	UserFn            func(echo.Context) *rest.AuthUser
+	EnforceRoleFn     func(echo.Context, rest.AccessRole) error
 	EnforceUserFn     func(echo.Context, int) error
 	EnforceCompanyFn  func(echo.Context, int) error
 	EnforceLocationFn func(echo.Context, int) error
-	AccountCreateFn   func(echo.Context, gorsk.AccessRole, int, int) error
-	IsLowerRoleFn     func(echo.Context, gorsk.AccessRole) error
+	AccountCreateFn   func(echo.Context, rest.AccessRole, int) error
+	IsLowerRoleFn     func(echo.Context, rest.AccessRole) error
 }
 
 // User mock
-func (a *RBAC) User(c echo.Context) *gorsk.AuthUser {
+func (a *RBAC) User(c echo.Context) *rest.AuthUser {
 	return a.UserFn(c)
 }
 
 // EnforceRole mock
-func (a *RBAC) EnforceRole(c echo.Context, role gorsk.AccessRole) error {
+func (a *RBAC) EnforceRole(c echo.Context, role rest.AccessRole) error {
 	return a.EnforceRoleFn(c, role)
 }
 
@@ -42,11 +42,11 @@ func (a *RBAC) EnforceLocation(c echo.Context, id int) error {
 }
 
 // AccountCreate mock
-func (a *RBAC) AccountCreate(c echo.Context, roleID gorsk.AccessRole, companyID, locationID int) error {
-	return a.AccountCreateFn(c, roleID, companyID, locationID)
+func (a *RBAC) AccountCreate(c echo.Context, roleID rest.AccessRole, locationID int) error {
+	return a.AccountCreateFn(c, roleID, locationID)
 }
 
 // IsLowerRole mock
-func (a *RBAC) IsLowerRole(c echo.Context, role gorsk.AccessRole) error {
+func (a *RBAC) IsLowerRole(c echo.Context, role rest.AccessRole) error {
 	return a.IsLowerRoleFn(c, role)
 }

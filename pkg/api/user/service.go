@@ -1,20 +1,20 @@
 package user
 
 import (
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/user/platform/pgsql"
+	rest "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 	"github.com/go-pg/pg"
 	"github.com/go-pg/pg/orm"
 	"github.com/labstack/echo"
-	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/user/platform/pgsql"
-	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 )
 
 // Service represents user application interface
 type Service interface {
-	Create(echo.Context, gorsk.User) (*gorsk.User, error)
-	List(echo.Context, *gorsk.Pagination) ([]gorsk.User, error)
-	View(echo.Context, int) (*gorsk.User, error)
+	Create(echo.Context, rest.User) (*rest.User, error)
+	List(echo.Context, *rest.Pagination) ([]rest.User, error)
+	View(echo.Context, int) (*rest.User, error)
 	Delete(echo.Context, int) error
-	Update(echo.Context, *Update) (*gorsk.User, error)
+	Update(echo.Context, *Update) (*rest.User, error)
 }
 
 // New creates new user application service
@@ -42,17 +42,17 @@ type Securer interface {
 
 // UDB represents user repository interface
 type UDB interface {
-	Create(orm.DB, gorsk.User) (*gorsk.User, error)
-	View(orm.DB, int) (*gorsk.User, error)
-	List(orm.DB, *gorsk.ListQuery, *gorsk.Pagination) ([]gorsk.User, error)
-	Update(orm.DB, *gorsk.User) error
-	Delete(orm.DB, *gorsk.User) error
+	Create(orm.DB, rest.User) (*rest.User, error)
+	View(orm.DB, int) (*rest.User, error)
+	List(orm.DB, *rest.ListQuery, *rest.Pagination) ([]rest.User, error)
+	Update(orm.DB, *rest.User) error
+	Delete(orm.DB, *rest.User) error
 }
 
 // RBAC represents role-based-access-control interface
 type RBAC interface {
-	User(echo.Context) *gorsk.AuthUser
+	User(echo.Context) *rest.AuthUser
 	EnforceUser(echo.Context, int) error
-	AccountCreate(echo.Context, gorsk.AccessRole, int, int) error
-	IsLowerRole(echo.Context, gorsk.AccessRole) error
+	AccountCreate(echo.Context, rest.AccessRole, int) error
+	IsLowerRole(echo.Context, rest.AccessRole) error
 }

@@ -6,6 +6,4 @@ type Location struct {
 	Name    string `json:"name"`
 	Active  bool   `json:"active"`
 	Address string `json:"address"`
-
-	CompanyID int `json:"company_id"`
 }
