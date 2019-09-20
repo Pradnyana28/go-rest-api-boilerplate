@@ -2,14 +2,14 @@
 package user
 
 import (
-	"github.com/labstack/echo"
 	rest "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/query"
+	"github.com/labstack/echo"
 )
 
 // Create creates a new user account
 func (u *User) Create(c echo.Context, req rest.User) (*rest.User, error) {
-	if err := u.rbac.AccountCreate(c, req.RoleID, req.CompanyID, req.LocationID); err != nil {
+	if err := u.rbac.AccountCreate(c, req.RoleID, req.LocationID); err != nil {
 		return nil, err
 	}
 	req.Password = u.sec.Hash(req.Password)

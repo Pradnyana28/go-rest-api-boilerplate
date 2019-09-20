@@ -1,8 +1,8 @@
 package rbac
 
 import (
+	rest "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 	"github.com/labstack/echo"
-	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 )
 
 // New creates new RBAC service
@@ -23,7 +23,6 @@ func checkBool(b bool) error {
 // User returns user data stored in jwt token
 func (s *Service) User(c echo.Context) *rest.AuthUser {
 	id := c.Get("id").(int)
-	companyID := c.Get("company_id").(int)
 	locationID := c.Get("location_id").(int)
 	user := c.Get("username").(string)
 	email := c.Get("email").(string)
@@ -31,7 +30,6 @@ func (s *Service) User(c echo.Context) *rest.AuthUser {
 	return &rest.AuthUser{
 		ID:         id,
 		Username:   user,
-		CompanyID:  companyID,
 		LocationID: locationID,
 		Email:      email,
 		Role:       role,
@@ -53,25 +51,9 @@ func (s *Service) EnforceUser(c echo.Context, ID int) error {
 	return checkBool(c.Get("id").(int) == ID)
 }
 
-// EnforceCompany checks whether the request to apply change to company data
-// is done by the user belonging to the that company and that the user has role CompanyAdmin.
-// If user has admin role, the check for company doesnt need to pass.
-func (s *Service) EnforceCompany(c echo.Context, ID int) error {
-	if s.isAdmin(c) {
-		return nil
-	}
-	if err := s.EnforceRole(c, rest.CompanyAdminRole); err != nil {
-		return err
-	}
-	return checkBool(c.Get("company_id").(int) == ID)
-}
-
 // EnforceLocation checks whether the request to change location data
 // is done by the user belonging to the requested location
 func (s *Service) EnforceLocation(c echo.Context, ID int) error {
-	if s.isCompanyAdmin(c) {
-		return nil
-	}
 	if err := s.EnforceRole(c, rest.LocationAdminRole); err != nil {
 		return err
 	}
@@ -82,14 +64,8 @@ func (s *Service) isAdmin(c echo.Context) bool {
 	return !(c.Get("role").(rest.AccessRole) > rest.AdminRole)
 }
 
-func (s *Service) isCompanyAdmin(c echo.Context) bool {
-	// Must query company ID in database for the given user
-	return !(c.Get("role").(rest.AccessRole) > rest.CompanyAdminRole)
-}
-
 // AccountCreate performs auth check when creating a new account
-// Location admin cannot create accounts, needs to be fixed on EnforceLocation function
-func (s *Service) AccountCreate(c echo.Context, roleID rest.AccessRole, companyID, locationID int) error {
+func (s *Service) AccountCreate(c echo.Context, roleID rest.AccessRole, locationID int) error {
 	if err := s.EnforceLocation(c, locationID); err != nil {
 		return err
 	}

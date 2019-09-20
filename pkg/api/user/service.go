@@ -1,11 +1,11 @@
 package user
 
 import (
+	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/user/platform/pgsql"
+	rest "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 	"github.com/go-pg/pg"
 	"github.com/go-pg/pg/orm"
 	"github.com/labstack/echo"
-	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/api/user/platform/pgsql"
-	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 )
 
 // Service represents user application interface
@@ -53,6 +53,6 @@ type UDB interface {
 type RBAC interface {
 	User(echo.Context) *rest.AuthUser
 	EnforceUser(echo.Context, int) error
-	AccountCreate(echo.Context, rest.AccessRole, int, int) error
+	AccountCreate(echo.Context, rest.AccessRole, int) error
 	IsLowerRole(echo.Context, rest.AccessRole) error
 }
