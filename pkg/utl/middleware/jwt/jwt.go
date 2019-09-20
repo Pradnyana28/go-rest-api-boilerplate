@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
+	rest "github.com/Pradnyana28/go-rest-api-boilerplate/pkg/utl/model"
 
 	"github.com/labstack/echo"
 
@@ -49,14 +49,12 @@ func (j *Service) MWFunc() echo.MiddlewareFunc {
 			claims := token.Claims.(jwt.MapClaims)
 
 			id := int(claims["id"].(float64))
-			companyID := int(claims["c"].(float64))
 			locationID := int(claims["l"].(float64))
 			username := claims["u"].(string)
 			email := claims["e"].(string)
 			role := rest.AccessRole(claims["r"].(float64))
 
 			c.Set("id", id)
-			c.Set("company_id", companyID)
 			c.Set("location_id", locationID)
 			c.Set("username", username)
 			c.Set("email", email)
@@ -97,7 +95,6 @@ func (j *Service) GenerateToken(u *rest.User) (string, string, error) {
 		"u":   u.Username,
 		"e":   u.Email,
 		"r":   u.Role.AccessLevel,
-		"c":   u.CompanyID,
 		"l":   u.LocationID,
 		"exp": expire.Unix(),
 	})

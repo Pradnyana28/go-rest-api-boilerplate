@@ -27,14 +27,12 @@ type User struct {
 	Role *Role `json:"role,omitempty"`
 
 	RoleID     AccessRole `json:"-"`
-	CompanyID  int        `json:"company_id"`
 	LocationID int        `json:"location_id"`
 }
 
 // AuthUser represents data stored in JWT token for user
 type AuthUser struct {
 	ID         int
-	CompanyID  int
 	LocationID int
 	Username   string
 	Email      string

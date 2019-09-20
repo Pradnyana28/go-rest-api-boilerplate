@@ -11,15 +11,15 @@ import (
 	"github.com/labstack/echo"
 )
 
-// HTTP represents user http service
+// HTTP represents car http service
 type HTTP struct {
-	svc user.Service
+	svc car.Service
 }
 
 // NewHTTP creates new user http service
-func NewHTTP(svc user.Service, er *echo.Group) {
+func NewHTTP(svc car.Service, er *echo.Group) {
 	h := HTTP{svc}
-	ur := er.Group("/users")
+	ur := er.Group("/cars")
 	// swagger:route POST /v1/users users userCreate
 	// Creates new user account.
 	// responses:
@@ -151,8 +151,8 @@ type createReq struct {
 	PasswordConfirm string `json:"password_confirm" validate:"required"`
 	Email           string `json:"email" validate:"required,email"`
 
-	CompanyID  int             `json:"company_id" validate:"required"`
-	LocationID int             `json:"location_id" validate:"required"`
+	CompanyID  int              `json:"company_id" validate:"required"`
+	LocationID int              `json:"location_id" validate:"required"`
 	RoleID     rest.AccessRole `json:"role_id" validate:"required"`
 }
 
@@ -178,6 +178,7 @@ func (h *HTTP) create(c echo.Context) error {
 		Email:      r.Email,
 		FirstName:  r.FirstName,
 		LastName:   r.LastName,
+		CompanyID:  r.CompanyID,
 		LocationID: r.LocationID,
 		RoleID:     r.RoleID,
 	})
@@ -191,7 +192,7 @@ func (h *HTTP) create(c echo.Context) error {
 
 type listResponse struct {
 	Users []rest.User `json:"users"`
-	Page  int         `json:"page"`
+	Page  int          `json:"page"`
 }
 
 func (h *HTTP) list(c echo.Context) error {
